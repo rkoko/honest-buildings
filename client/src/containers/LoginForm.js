@@ -5,19 +5,13 @@ import { Grid, Button, Form, Segment, Divider } from 'semantic-ui-react'
 class LoginForm extends Component {
 
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: ''
   }
 
-  handleUsername = (event) => {
+  handleChange = (event) => {
     this.setState({
-      username: event.target.value
-    })
-  }
-
-  handlePassword = (event) => {
-    this.setState({
-      password: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -34,13 +28,13 @@ class LoginForm extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Username</label>
-              <input name='username' placeholder='Username' onChange={this.handleUsername} />
+              <input name='username' placeholder='Username' onChange={this.handleChange} />
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input type='password' name='password' placeholder='Password' onChange={this.handlePassword}/>
+              <input type='password' name='password' placeholder='Password' onChange={this.handleChange}/>
             </Form.Field>
-            <Button size='huge' type='submit'>Login</Button>
+            <Button size='small' type='submit'>Login</Button>
           </Form>
         </Grid.Column>
       </Grid>
@@ -49,32 +43,3 @@ class LoginForm extends Component {
 }
 
 export default LoginForm
-
-// import { Button, Checkbox, Form } from 'semantic-ui-react'
-//
-// class LoginForm extends Component {
-//   render() {
-//     return (
-//       <div>
-//       <Form>
-//         <Form.Field>
-//           <label>username</label>
-//           <input placeholder='username' />
-//         </Form.Field>
-//         <Form.Field>
-//           <label>password</label>
-//           <input type='password' placeholder='password' />
-//         </Form.Field>
-//         <Form.Field>
-//           <Checkbox label='I agree to the Terms and Conditions' />
-//         </Form.Field>
-//
-//         <Button type='submit'>Submit</Button>
-//
-//       </Form>
-//     </div>
-//     );
-//   }
-// }
-//
-// export default LoginForm

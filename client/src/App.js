@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Navbar from './components/nav'
+import Nav from './components/nav'
 import LoginForm from './containers/LoginForm'
+import SignupForm from './containers/SignupForm'
+import ReviewForm from './containers/ReviewForm'
 import Auth from './auth/authorize'
 import AuthAdapter from './auth/authAdapter'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
@@ -41,12 +43,12 @@ class App extends Component {
 AuthAdapter.signUp(signUpParams)
   .then( res => {
     //check for an error message
-    if( res.error ){
+    if (res.error) {
       console.log("do nothing")
-    }else{
+    } else {
       localStorage.setItem('jwt', res.jwt)
       this.setState({
-        auth:{
+        auth: {
           isLoggedIn: true,
           user: res.username
         }
@@ -73,12 +75,10 @@ handleLogout = () => {
       <div>
         <Router>
           <div>
-            <Navbar />
-            App
+            <Nav handleLogout={this.handleLogout}/>
             <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
-            <Route path="/logout" render={() => {this.handleLogout()
-               return (<Redirect to="/"/>)}} />
-
+            <Route path="/signup" render={() => <SignupForm /> }/>
+            <Route path="/new-review" render={() => <ReviewForm />} />
             </div>
         </Router>
       </div>
