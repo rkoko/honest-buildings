@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Nav from './components/nav'
 import LoginForm from './containers/LoginForm'
 import SignupForm from './containers/SignupForm'
 import ReviewForm from './containers/ReviewForm'
+import MgmtForm from './containers/MgmtForm'
 import Auth from './auth/authorize'
 import AuthAdapter from './auth/authAdapter'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import Home from './containers/Home'
 
 
 class App extends Component {
@@ -68,17 +69,16 @@ handleLogout = () => {
   }})
 }
 
-
-
   render() {
     return (
       <div>
         <Router>
           <div>
-            <Nav handleLogout={this.handleLogout}/>
             <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
             <Route path="/signup" render={() => <SignupForm /> }/>
             <Route path="/new-review" render={() => <ReviewForm />} />
+            <Route path="/mgmt-signup" render={()=> <MgmtForm />} />
+            <Route path="/home" render={()=> <Home handleLogout={this.handleLogout} />} />
             </div>
         </Router>
       </div>

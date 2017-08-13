@@ -5,9 +5,13 @@ import { NavLink } from 'react-router-dom'
 export default class Nav extends Component {
   state = {}
 
-  handleItemClick = (e, { name }) => {
+  handleLogout = (e, { name }) => {
     this.setState({ activeItem: name })
     this.props.handleLogout()
+  }
+
+  handleInputClick = (e, { name }) => {
+    this.setState({ activeItem: name })
   }
 
   render() {
@@ -19,12 +23,11 @@ export default class Nav extends Component {
             <NavLink to="/new-review"> Write a review </NavLink>
         </Menu.Item>
 
-        <Menu.Item name='Logout' active={activeItem === 'Logout'} onClick={this.handleItemClick} position="right" >
+        <Menu.Item name='Logout' active={activeItem === 'Logout'} onClick={this.handleLogout} position="right" >
             <NavLink to="/"> Logout </NavLink>
         </Menu.Item>
-        <Menu.Item name='Sign up' active={activeItem === 'Sign up'} onClick={this.handleItemClick}>
-            <NavLink to="/signup"> Signup </NavLink>
-        </Menu.Item>
+        {/* <Menu.Item name='Sign up as building mgr' active={activeItem === 'Sign up'} onClick={this.handleItemClick}>
+        </Menu.Item> */}
       </Menu>
     )
   }

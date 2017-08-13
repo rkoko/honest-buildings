@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170809193409) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "street_address"
-    t.string "city"
+    t.string "neighborhood"
     t.string "state"
     t.integer "zipcode"
     t.bigint "building_mgmt_id"
