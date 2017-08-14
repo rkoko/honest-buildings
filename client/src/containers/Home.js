@@ -8,7 +8,7 @@ import BuildingList from '../components/BuildingList'
 class Home extends Component{
   state = {
     buildings: [],
-    searchResults: []
+    searchResults: [],
   }
 
   componentDidMount(){
@@ -19,15 +19,17 @@ class Home extends Component{
 
   onSearchSubmit = (searchTerm) =>{
     this.setState({
-      searchResults: this.state.buildings.buildings.filter(building => building.street_address.toLowerCase().includes(searchTerm.toLowerCase()))
+      searchResults: this.state.buildings.filter(building => building.street_address.toLowerCase().includes(searchTerm.toLowerCase()))
     })
   }
 
 
   render(){
+    console.log(this.state)
     return(
-      <div className='ui container'>
+      <div>
         <Nav handleLogout={this.props.handleLogout}/>
+      <div className='ui container'>
         <p>User page after they login</p>
         <Search handleSearchSubmit={this.onSearchSubmit}/>
         <br/>
@@ -37,6 +39,7 @@ class Home extends Component{
         <FeaturedBuildings />
 
       </div>
+    </div>
     )
   }
 }

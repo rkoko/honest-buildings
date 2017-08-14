@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Icon, Input, Button, Form } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 
 export default class Search extends Component {
   state={

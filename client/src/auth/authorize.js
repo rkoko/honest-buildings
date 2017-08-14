@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-// 
+//
 //
 // // in components/Beef.js
 // import authorize from './authorize.js'
@@ -17,7 +17,7 @@ import PropTypes from 'prop-types'
 // authorize(<Map>, {isAdmin: true})
 // {/* connect(alkjlakj, aslkgjalkdgj) */}
 
-export default function (ComposedComponent, iheritedProps) {
+export default function (ComposedComponent, inheritedProps) {
   class Authentication extends Component {
     static contextTypes = {
       router: PropTypes.object
@@ -33,7 +33,7 @@ export default function (ComposedComponent, iheritedProps) {
       }
     }
     render(){
-      return <ComposedComponent  {...this.props} />
+      return <ComposedComponent  {...inheritedProps} />
     }
   }
 

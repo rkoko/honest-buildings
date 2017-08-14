@@ -19,9 +19,9 @@ export default class Nav extends Component {
 
     return (
       <Menu>
-        <Menu.Item name='Write a review' active={activeItem === 'Write a review'} onClick={this.handleItemClick} position="left">
+        {/* <Menu.Item name='Write a review' active={activeItem === 'Write a review'} onClick={this.handleItemClick} position="left">
             <NavLink to="/new-review"> Write a review </NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
 
         <Menu.Item name='Logout' active={activeItem === 'Logout'} onClick={this.handleLogout} position="right" >
             <NavLink to="/"> Logout </NavLink>

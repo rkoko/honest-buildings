@@ -4,7 +4,6 @@ class Api::V1::BuildingMgmtsController < ApplicationController
   end
 
   def create
-    byebug
     mgmt = BuildingMgmt.new(mgmt_params)
     mgmt.save
     if mgmt.save

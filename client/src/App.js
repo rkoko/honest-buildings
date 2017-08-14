@@ -5,12 +5,11 @@ import ReviewForm from './containers/ReviewForm'
 import MgmtForm from './containers/MgmtForm'
 import Auth from './auth/authorize'
 import AuthAdapter from './auth/authAdapter'
-import BuildingList from './components/BuildingList'
+import Building from './components/Building'
+import './App.css'
 import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import { createHashHistory } from 'history'
 import Home from './containers/Home'
 
-const history = createHashHistory
 
 class App extends Component {
   constructor(props){
@@ -72,17 +71,18 @@ handleLogout = () => {
 }
 
   render() {
+    console.log(this.state)
     return (
       <div>
-        <Router history={history}>
+        <Router>
           <div>
             <Switch>
             <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
             <Route path="/signup" render={() => <SignupForm /> }/>
-            <Route path="/new-review" render={() => <ReviewForm />} />
             <Route path="/mgmt-signup" render={()=> <MgmtForm />} />
-            {/* <Route path="/buildings" component={BuildingList}/> */}
-            <Route path="/home" render={()=> <Home handleLogout={this.handleLogout} />} />
+            <Route path="/buildings/:id" component={Auth(Building)}/>
+            <Route path="/home" component={Auth(Home, {handleLogout: this.handleLogout})} />
+
 
           </Switch>
             </div>
