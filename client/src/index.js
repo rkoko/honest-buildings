@@ -5,3 +5,4 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 ReactDOM.render(<App />, document.getElementById('root'))
+//should router be placed here or in app.js?

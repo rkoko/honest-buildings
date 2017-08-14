@@ -41,7 +41,7 @@ export default class UserForm extends Component{
   render(){
 
     return(
-      <div>
+      <div className='ui container'>
       <Form onSubmit={this.handleSubmit}>
 
         <Form.Field>

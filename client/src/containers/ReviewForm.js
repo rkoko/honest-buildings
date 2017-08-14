@@ -14,10 +14,12 @@ class ReviewForm extends Component {
   render() {
     const { value } = this.state
     return (
+      <div className='ui container'>
+      <p>Your review helps others learn about the building and how it's being managed. This is a source for potential residents and current residents so please do not write a review if you are connected with the building management firm. </p>
       <Form>
         <Form.Group widths='equal'>
           <Form.Field control={Input} label='Communication' placeholder='Communication'/>
-          
+
           <Form.Field control={Input} label='Building Upkeep' placeholder='Building Upkeep' />
           </Form.Group>
 
@@ -39,6 +41,7 @@ class ReviewForm extends Component {
         {/* <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' /> */}
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
+    </div>
     )
   }
 }

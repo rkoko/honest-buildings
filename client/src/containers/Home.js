@@ -4,6 +4,7 @@ import Nav from '../components/nav'
 import FeaturedBuildings from '../components/FeaturedBuildings'
 import BuildingList from '../components/BuildingList'
 
+
 class Home extends Component{
   state = {
     buildings: [],
@@ -24,17 +25,17 @@ class Home extends Component{
 
 
   render(){
-    console.log(this.state)
     return(
-      <div>
+      <div className='ui container'>
         <Nav handleLogout={this.props.handleLogout}/>
         <p>User page after they login</p>
         <Search handleSearchSubmit={this.onSearchSubmit}/>
         <br/>
         <br/>
         <br/>
-        <BuildingList buildings={this.state.searchResults} />
+        <BuildingList buildings={this.state.searchResults}/>
         <FeaturedBuildings />
+
       </div>
     )
   }
