@@ -7,10 +7,13 @@ Rails.application.routes.draw do
       get '/users', to: 'users#index'
       post '/building_mgmts/signup', to: 'building_mgmts#create'
       get '/building_mgmts', to: 'building_mgmts#index'
+      # get '/building_mgmts/:id' to: 'building_mgmts#show'
       get '/buildings', to: 'buildings#index'
-      resources :reviews
+      post '/buildings/new', to: 'reviews#create'
+      get '/reviews', to: 'reviews#index'
+      # resources :reviews
       resources :buildings
-      # resources :building_mgmts, only: %i[show create]
+      resources :building_mgmts
       # resources :users
       # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     end

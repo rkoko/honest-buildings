@@ -1,4 +1,4 @@
 class BuildingMgmtSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :buildings
   has_many :buildings
 end

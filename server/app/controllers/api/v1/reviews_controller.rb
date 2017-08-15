@@ -1,5 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
-
+before_action :authorize_user!
 
   def index
     render json: Review.all
@@ -11,11 +11,18 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     review = Review.new(review_params)
+    review.user_id = current_user.id
     review.save
-    render json: {review: review}
+    render json: review
   end
 
-  def listing_params
-    params.require(:review).permit(:)
+
+  private
+
+  def review_params
+    params.require(:review).permit( :upkeep_rating,
+    :comms_rating,
+    :quality_rating, :speedy_rating, :body, :comment, :building_mgmt_id, :building_id)
+  end
 
 end

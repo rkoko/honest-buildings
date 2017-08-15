@@ -4,47 +4,51 @@ import { NavLink } from 'react-router-dom'
 
 
 class ReviewForm extends Component {
-  state={
+  state = {
     upkeep_rating: '',
     comms_rating: '',
     quality_rating: '',
     speedy_rating: '',
     body: '',
-    comment: 'comment'
+    comment: 'comment',
+    building_mgmt_id: '' ,
+    building_id: ''
   }
 
-  handleChange = (event) =>{
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      body: event.target.value,
+      building_mgmt_id: this.props.mgmt_id,
+      building_id: this.props.building_id
     })
   }
 
-  handleComms = (event, { rating }) =>{
+  handleComms = (event, { rating }) => {
     this.setState({
       comms_rating: rating.toString()
     })
   }
 
-  handleQuality = (event, { rating }) =>{
+  handleQuality = (event, { rating }) => {
     this.setState({
       quality_rating: rating.toString()
     })
   }
 
-  handleSpeed = (event, { rating }) =>{
+  handleSpeed = (event, { rating }) => {
     this.setState({
       speedy_rating: rating.toString()
     })
   }
 
-  handleUpkeep = (event, { rating }) =>{
+  handleUpkeep = (event, { rating }) => {
     this.setState({
       upkeep_rating: rating.toString()
     })
   }
 
 
-  handleSubmit = (event) =>{
+  handleSubmit = (event) => {
     event.preventDefault()
     fetch('http://localhost:3000/api/v1/buildings/new', {
       method: 'POST',
@@ -52,18 +56,30 @@ class ReviewForm extends Component {
       headers: {
         'content-type': 'application/json',
         'accept': 'application/json',
-        // 'Authorization': localStorage.getItem('jwt')
+        'Authorization': localStorage.getItem('jwt')
       }
     }).then(res => res.json())
-    .then(res => console.log(res))
+    .then((res) => {
+      this.props.history.push(`/buildings/${this.state.building_id}`)
+      this.props.newReviewSubmit(res)
+      console.log(res)
+    })
   }
 
+  // componentDidUpdate(){
+  //   if (this.state.submitted) {
+  //     de
+  //     // this.props.history.push(this.props.history.location.pathname.substr(0, this.props.history.location.pathname.indexOf("new-review")))
+  //   }
+  // }
+
+
   render() {
-    console.log(this.state)
+    console.log(this.props.history)
     return (
       <div className='ui container'>
       <p>Your review helps others learn about the building and how it's being managed. This is a source for potential residents and current residents so please do not write a review if you are connected with the building management firm. </p>
-      <Form>
+      <Form onSubmit={this.handleSubmit} >
         <Form.Field>
           <label>Building Upkeep</label>
            <Rating name='upkeep' maxRating={5} onRate={this.handleUpkeep}/>
@@ -86,6 +102,7 @@ class ReviewForm extends Component {
         <Form.TextArea label='Your review' name="body" placeholder="Tell us more..." onChange={this.handleChange} />
 
         <Button>Submit Review</Button>
+        {/* how to make new review show up without refreshing */}
         <NavLink to={`/buildings/${this.props.match.params.id}`}><Button>Cancel</Button></NavLink>
 
       </Form>

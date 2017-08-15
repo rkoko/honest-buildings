@@ -13,8 +13,13 @@ class Api::V1::BuildingMgmtsController < ApplicationController
   end
 end
 
+
   def show
-    render json: { building_mgmt: BuildingMgmt.find(params[:id]) }
+    building_mgmt = BuildingMgmt.find(params[:id])
+    buildings = building_mgmt.buildings
+    reviews = building_mgmt.reviews
+    avg_rating = building_mgmt.calculate_avg_rating.round(2)
+    render json: { building_mgmt: building_mgmt, avg_rating: avg_rating, buildings: buildings, reviews: reviews}
   end
 
   def find_mgmt

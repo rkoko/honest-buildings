@@ -23,6 +23,8 @@ export default class Nav extends Component {
             <NavLink to="/new-review"> Write a review </NavLink>
         </Menu.Item> */}
 
+        <Menu.Item>Honest Buildings - community for NYC residents</Menu.Item>
+
         <Menu.Item name='Logout' active={activeItem === 'Logout'} onClick={this.handleLogout} position="right" >
             <NavLink to="/"> Logout </NavLink>
         </Menu.Item>
