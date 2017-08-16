@@ -41,7 +41,7 @@ class Building extends Component{
     // debugger
     return(
       <div>
-        <Nav />
+        <Nav handleLogout={this.props.handleLogout}/>
       <div className='ui container'>
 
         <h4>{this.state.currentAddress}</h4>

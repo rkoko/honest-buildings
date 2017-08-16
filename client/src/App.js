@@ -88,7 +88,7 @@ handleLogout = () => {
             <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
             <Route path="/signup" render={() => <SignupForm /> }/>
             <Route path="/mgmt-signup" render={()=> <MgmtForm />} />
-            <Route path="/buildings/:id" component={Auth(Building, {history: history})}/>
+            <Route path="/buildings/:id" component={Auth(Building, {history: history},{handleLogout: this.handleLogout} )}/>
             <Route path="/building_mgmts/:id" component={Auth(BuildingMgmt)}/>
             <Route path="/home" component={Auth(Home, {handleLogout: this.handleLogout})} />
 
