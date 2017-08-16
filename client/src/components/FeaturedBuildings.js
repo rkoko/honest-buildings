@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react'
 
 const FeaturedBuildings = () => (
   <div>
-    <h2>Featured Buildings</h2>
+    <h2><font color="white">Featured Buildings</font></h2>
     <Card.Group>
 
         <Card

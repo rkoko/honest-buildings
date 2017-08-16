@@ -6,9 +6,8 @@ import BuildingReviews from './BuildingReviews'
 import Nav from './nav'
 
 class Building extends Component{
-  constructor(props){
-    super(props)
-
+  constructor(props) {
+    super()
     this.state={
       id: window.location.pathname.split("/")[2],
       currentAddress: '',
@@ -33,31 +32,25 @@ class Building extends Component{
     ))
   }
 
-  newReviewSubmit = (review) =>{
+  newReviewSubmit = (review) => {
     this.setState({currentReviews: [review, ...this.state.currentReviews]})
   }
 
-  render(){
-    // debugger
-    return(
+  render() {
+    return (
       <div>
         <Nav handleLogout={this.props.handleLogout}/>
-      <div className='ui container'>
-
-        <h4>{this.state.currentAddress}</h4>
-        <p>{this.state.currentRating}/5 stars</p>
-        <p>street address: {this.state.currentAddress} </p>
-        <p>neighborhood: {this.state.currentNeighborhood}</p>
-        <p>mgmt: <NavLink to={`/building_mgmts/${this.state.currentMgmtId}`}>{this.state.currentMgmt}</NavLink></p>
-
-        <NavLink to={`${window.location.pathname}/new-review`}><Button size='small' >Write a review</Button></NavLink>
-
-        <Route path="/buildings/:id/new-review" render={({match})=> <ReviewForm newReviewSubmit={this.newReviewSubmit} match={match} building_id={this.state.id} mgmt_id={this.state.currentMgmtId} history={this.props.history}/>} />
-
-        <h4>Building Reviews: </h4>
-           <BuildingReviews currentReviews={this.state.currentReviews}/>
-
-      </div>
+        <div className='ui container'>
+          <h4>{this.state.currentAddress}</h4>
+          <p>{this.state.currentRating}/5 stars</p>
+          <p>street address: {this.state.currentAddress} </p>
+          <p>neighborhood: {this.state.currentNeighborhood}</p>
+          <p>mgmt: <NavLink to={`/building_mgmts/${this.state.currentMgmtId}`}>{this.state.currentMgmt}</NavLink></p>
+          <NavLink to={`${window.location.pathname}/new-review`}><Button size='small' >Write a review</Button></NavLink>
+          <Route path="/buildings/:id/new-review" render={({match})=> <ReviewForm newReviewSubmit={this.newReviewSubmit} match={match} building_id={this.state.id} mgmt_id={this.state.currentMgmtId} history={this.props.history}/>} />
+          <h4>Building Reviews: </h4>
+          <BuildingReviews currentReviews={this.state.currentReviews}/>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Grid } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 
@@ -41,7 +41,10 @@ export default class UserForm extends Component{
   render(){
 
     return(
-      <div className='ui container'>
+      <div className='signupform'>
+        <Grid className='grid' centered columns={3}>
+          <Grid.Column>
+
       <Form onSubmit={this.handleSubmit}>
 
         <Form.Field>
@@ -70,6 +73,8 @@ export default class UserForm extends Component{
 
         <Button>Sign up</Button>
       </Form>
+    </Grid.Column>
+  </Grid>
     </div>
     )
   }

@@ -7,7 +7,6 @@ import Auth from './auth/authorize'
 import AuthAdapter from './auth/authAdapter'
 import Building from './components/Building'
 import BuildingMgmt from './components/BuildingMgmt'
-import './App.css'
 import {Router, Route, Redirect, Switch } from 'react-router-dom'
 import Home from './containers/Home'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -79,22 +78,19 @@ handleLogout = () => {
 }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <Router history={history}>
           <div>
             <Switch>
-            <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
-            <Route path="/signup" render={() => <SignupForm /> }/>
-            <Route path="/mgmt-signup" render={()=> <MgmtForm />} />
-            <Route path="/buildings/:id" component={Auth(Building, {history: history},{handleLogout: this.handleLogout} )}/>
-            <Route path="/building_mgmts/:id" component={Auth(BuildingMgmt)}/>
-            <Route path="/home" component={Auth(Home, {handleLogout: this.handleLogout})} />
-
-
-          </Switch>
-            </div>
+              <Route exact path="/" render={()=> this.state.auth.isLoggedIn ? <Redirect to="/home" /> : <LoginForm onLogin={this.onLogin}/>} />
+              <Route path="/signup" render={() => <SignupForm /> }/>
+              <Route path="/mgmt-signup" render={()=> <MgmtForm />} />
+              <Route path="/buildings/:id" component={Auth(Building, {history: history, handleLogout: this.handleLogout})}/>
+              <Route path="/building_mgmts/:id" component={Auth(BuildingMgmt)}/>
+              <Route path="/home" component={Auth(Home, {handleLogout: this.handleLogout})} />
+            </Switch>
+          </div>
         </Router>
       </div>
     );

@@ -22,7 +22,7 @@ export default class Search extends Component {
   render() {
     console.log(this.state);
     return (
-          <Input size='huge' icon='search' placeholder='Search for an address' type="text"
+          <Input  fluid icon='search' placeholder='Search for an address' type="text"
             value={this.searchTerm} onChange={this.handleChange}
           onKeyPress={this.handleKeyPress}/>
         )

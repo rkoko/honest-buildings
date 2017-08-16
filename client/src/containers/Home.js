@@ -24,22 +24,20 @@ class Home extends Component{
   }
 
 
-  render(){
-    console.log(this.props.handleLogout)
+  render() {
     return(
-      <div>
+      <div className='homepage'>
         <Nav handleLogout={this.props.handleLogout}/>
-      <div className='ui container'>
-        <p>User page after they login</p>
-        <Search handleSearchSubmit={this.onSearchSubmit}/>
-        <br/>
-        <br/>
-        <br/>
-        <BuildingList buildings={this.state.searchResults}/>
-        <FeaturedBuildings />
+        <div className='ui container'>
 
+          <Search handleSearchSubmit={this.onSearchSubmit}/>
+          <br/>
+          <br/>
+          <br/>
+          <BuildingList buildings={this.state.searchResults}/>
+          <FeaturedBuildings />
+        </div>
       </div>
-    </div>
     )
   }
 }
