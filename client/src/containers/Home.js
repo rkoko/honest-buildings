@@ -12,7 +12,7 @@ class Home extends Component{
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3000/api/v1/buildings`)
+    fetch(`http://localhost:3000/api/v1/buildings/addresses`)
     .then(res => res.json())
     .then(data => this.setState({buildings: data}))
   }
@@ -25,7 +25,7 @@ class Home extends Component{
 
 
   render(){
-    console.log(this.state)
+    console.log(this.props.handleLogout)
     return(
       <div>
         <Nav handleLogout={this.props.handleLogout}/>

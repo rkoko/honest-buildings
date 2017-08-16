@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get '/buildings', to: 'buildings#index'
       post '/buildings/new', to: 'reviews#create'
       get '/reviews', to: 'reviews#index'
+      get '/buildings/addresses', to: 'buildings#addresses'
       # resources :reviews
       resources :buildings
       resources :building_mgmts

@@ -7,9 +7,9 @@ const BuildingList = ({buildings}) =>{
       <ul>
 
         {buildings.map(building=>(
-          <li key={building.id}> <NavLink to={`/buildings/${building.id}`} >{building.street_address}</NavLink></li>
-        )
-        )}
+            <li key={building.id}> <NavLink to={`/buildings/${building.id}`} >{building.street_address}</NavLink></li>
+          )
+          )}
       </ul>
   </div>
   )

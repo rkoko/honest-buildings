@@ -6,9 +6,10 @@ class Api::V1::BuildingsController < ApplicationController
     render json: Building.all
   end
 
-  # def building_addresses
-  #   render json: Building.all
-  # end
+  def addresses
+    building_addresses = Building.all.pluck(:id, :street_address).map{|id, street_address|{id: id, street_address: street_address}}
+    render json: building_addresses
+  end
 
   def show
       building = Building.find(params[:id])

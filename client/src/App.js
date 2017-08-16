@@ -11,11 +11,15 @@ import './App.css'
 import {Router, Route, Redirect, Switch } from 'react-router-dom'
 import Home from './containers/Home'
 import createBrowserHistory from 'history/createBrowserHistory'
+import PropTypes from 'prop-types'
 
 const history = createBrowserHistory()
 
 
 class App extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
   constructor(props){
     super(props)
     this.state = {

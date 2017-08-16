@@ -66,12 +66,6 @@ class ReviewForm extends Component {
     })
   }
 
-  // componentDidUpdate(){
-  //   if (this.state.submitted) {
-  //     de
-  //     // this.props.history.push(this.props.history.location.pathname.substr(0, this.props.history.location.pathname.indexOf("new-review")))
-  //   }
-  // }
 
 
   render() {
@@ -102,7 +96,6 @@ class ReviewForm extends Component {
         <Form.TextArea label='Your review' name="body" placeholder="Tell us more..." onChange={this.handleChange} />
 
         <Button>Submit Review</Button>
-        {/* how to make new review show up without refreshing */}
         <NavLink to={`/buildings/${this.props.match.params.id}`}><Button>Cancel</Button></NavLink>
 
       </Form>

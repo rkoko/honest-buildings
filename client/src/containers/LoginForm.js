@@ -23,6 +23,7 @@ class LoginForm extends Component {
 
   render () {
     return (
+      <div className='loginform'>
       <Grid centered columns={3}>
         <Grid.Column>
           <Form onSubmit={this.handleSubmit}>
@@ -41,6 +42,7 @@ class LoginForm extends Component {
           </Form>
         </Grid.Column>
       </Grid>
+    </div>
     )
   }
 }
